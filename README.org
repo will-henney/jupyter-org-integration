@@ -1,0 +1,4 @@
+* Test of integrating jupyter with emacs org-mode
+First I am going to try ob-ipython, to see if that works better than using the normal python integration
+** ob-ipython
+** EIN
