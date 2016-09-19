@@ -23,7 +23,7 @@ First we import the packages we want and set up the plotting style.
   import matplotlib.pyplot as plt
   import numpy as np
   import seaborn as sns
-  sns.set(context='notebook', 
+  sns.set(context='notebook',
           style='darkgrid', 
           palette='bright',
           font_scale=1.5,
@@ -133,9 +133,13 @@ We should also look at this
 
     #+RESULTS:
     : lrwxr-xr-x  1 will  staff  9 Sep 19 09:09 figs -> docs/figs
-+ The export options are given below (invisible in HTML export)
++ Configuration of MathJax for equation display
+  + Use the =https= protocol
+    #+HTML_MATHJAX: path: "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"
+  + Try the Asana-Math font
+    #+HTML_MATHJAX: font: Neo-Euler
++ The general export options are given below (invisible in HTML export)
   + Only change from default is to remove section numbering
-
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t

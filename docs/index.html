@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-09-19 Mon 09:23 -->
+<!-- 2016-09-19 Mon 09:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Test of integrating jupyter with emacs org-mode</title>
@@ -431,11 +431,11 @@ for the JavaScript code in this tag.
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
-                        webFont: "TeX"
+                        webFont: "Neo-Euler"
                        },
         SVG: {scale: 100,
               linebreaks: { automatic: "false" },
-              font: "TeX"},
+              font: "Neo-Euler"},
         NativeMML: {scale: 100},
         TeX: { equationNumbers: {autoNumber: "AMS"},
                MultLineWidth: "85%",
@@ -445,7 +445,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -501,7 +501,7 @@ First we import the packages we want and set up the plotting style.
 <span style="color: #b9d3ee;">import</span> matplotlib.pyplot <span style="color: #b9d3ee;">as</span> plt
 <span style="color: #b9d3ee;">import</span> numpy <span style="color: #b9d3ee;">as</span> np
 <span style="color: #b9d3ee;">import</span> seaborn <span style="color: #b9d3ee;">as</span> sns
-sns.<span style="color: #DCDCCC; font-weight: bold;">set</span>(context=<span style="color: #eee8aa; font-style: italic;">'notebook'</span>, 
+sns.<span style="color: #DCDCCC; font-weight: bold;">set</span>(context=<span style="color: #eee8aa; font-style: italic;">'notebook'</span>,
         style=<span style="color: #eee8aa; font-style: italic;">'darkgrid'</span>, 
         palette=<span style="color: #eee8aa; font-style: italic;">'bright'</span>,
         font_scale=1.5,
@@ -654,7 +654,16 @@ But this is really a symbolic link to the <code>docs/</code> folder:
 lrwxr-xr-x  1 will  staff  9 Sep 19 09:09 figs -&gt; docs/figs
 </pre></li>
 </ul></li>
-<li>The export options are given below (invisible in HTML export)
+<li>Configuration of MathJax for equation display
+<ul class="org-ul">
+<li><p>
+Use the <code>https</code> protocol
+</p></li>
+<li><p>
+Try the Asana-Math font
+</p></li>
+</ul></li>
+<li>The general export options are given below (invisible in HTML export)
 <ul class="org-ul">
 <li>Only change from default is to remove section numbering</li>
 </ul></li>
@@ -664,7 +673,7 @@ lrwxr-xr-x  1 will  staff  9 Sep 19 09:09 figs -&gt; docs/figs
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: William Henney</p>
-<p class="date">Created: 2016-09-19 Mon 09:23</p>
+<p class="date">Created: 2016-09-19 Mon 09:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
