@@ -155,3 +155,20 @@ We should also look at this
 #+OPTIONS: html5-fancy:nil tex:t
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_CONTAINER: div
+
+*** Issues with the export to GitHub pages
+
++ On the whole, it works pretty well
++ The main problem with using the github.io address is that the CDN takes a very long time to propagate changes.  Like, several hours.  
++ I set up a dns forward from jupiter-org-integration.henney.org
+  + /Notice the typo in the name!/
+  + That updated faster
++ There were some issues with mathjax 
+  + I have switched it to https to be on the safe side.  
+  + it worked perfectly on my iPad, but to begin with not on my iPhone 
+  + This turned out to be because of content blocker Purify
+  + Once I white listed my site, all was fine
+  + On my laptop, the change of font is not respected
+    + But this may well be something I have configured 
+
+
