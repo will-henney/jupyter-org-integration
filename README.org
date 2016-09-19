@@ -1,4 +1,133 @@
 * Test of integrating jupyter with emacs org-mode
-First I am going to try ob-ipython, to see if that works better than using the normal python integration
+First I am going to try =ob-ipython=, to see if that works better than using the normal python integration
 ** ob-ipython
+*** Installation
++ It seems I already had installed it from MELPA
++ [2016-09-18 Sun 18:54] updated to the latest version
+*** Tests
+We turn this on so that the inline figs get updated immediately
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+#+END_SRC
+
+#+RESULTS:
+| org-display-inline-images |
+
+First we import the packages we want and set up the plotting style.
+#+BEGIN_SRC ipython :session
+  %matplotlib inline
+  import matplotlib.pyplot as plt
+  import numpy as np
+  import seaborn as sns
+  sns.set(context='notebook', 
+          style='darkgrid', 
+          palette='bright',
+          font_scale=1.5,
+          color_codes=True)
+#+END_SRC
+
+#+RESULTS:
+
+Use SVG files instead of PNG for resolution independence.
+#+BEGIN_SRC ipython :session
+  %config InlineBackend.figure_format = 'svg'
+#+END_SRC
+
+#+RESULTS:
+
+Inspect the style parameters that we got from the =darkgrid= canned option. 
+#+BEGIN_SRC ipython :session :exports both
+  sns.axes_style()
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{'axes.axisbelow': True,
+ 'axes.edgecolor': 'white',
+ 'axes.facecolor': '#EAEAF2',
+ 'axes.grid': True,
+ 'axes.labelcolor': '.15',
+ 'axes.linewidth': 0.0,
+ 'figure.facecolor': 'white',
+ 'font.family': [u'sans-serif'],
+ 'font.sans-serif': [u'Arial',
+  u'Liberation Sans',
+  u'Bitstream Vera Sans',
+  u'sans-serif'],
+ 'grid.color': 'white',
+ 'grid.linestyle': u'-',
+ 'image.cmap': u'Greys',
+ 'legend.frameon': False,
+ 'legend.numpoints': 1,
+ 'legend.scatterpoints': 1,
+ 'lines.solid_capstyle': u'round',
+ 'text.color': '.15',
+ 'xtick.color': '.15',
+ 'xtick.direction': u'out',
+ 'xtick.major.size': 0.0,
+ 'xtick.minor.size': 0.0,
+ 'ytick.color': '.15',
+ 'ytick.direction': u'out',
+ 'ytick.major.size': 0.0,
+ 'ytick.minor.size': 0.0}
+#+end_example
+
+Change the plot colours to be more suitable to a dark background. 
+#+BEGIN_SRC ipython :session 
+black_style ={
+ 'axes.edgecolor': '#3f3f3f',
+ 'axes.facecolor': '#504040',
+ 'axes.labelcolor': '.85',
+ 'figure.facecolor': '#3f3f3f',
+ 'grid.color': 'gray',
+ 'xtick.color': '.85',
+ 'ytick.color': '.85',
+
+}
+sns.set_style(rc=black_style)
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC ipython :session :file /tmp/image.svg :exports both
+  plt.hist(np.random.randn(20000), bins=50)
+#+END_SRC
+
+#+RESULTS:
+[[file:/tmp/image.svg]]
+
+#+BEGIN_SRC ipython :session :file /tmp/fig-ax.svg :exports both
+  fig, ax = plt.subplots(1, 1)
+  fig.set_size_inches(5, 3)
+  x = np.linspace(-20.0, 20.0, 100)
+  ax.plot(x, np.sin(x)/x)
+#+END_SRC
+
+#+RESULTS:
+[[file:/tmp/fig-ax.svg]]
+
+So we can make a plot of 
+\[
+y = \frac{\sin x}{x}
+\]
+if we want to.  And we can change the size of the figure. 
+ 
 ** EIN
+We should also look at this
+
+** Export options
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+TITLE: README
+#+AUTHOR: William Henney
+#+EMAIL: will@henney.org
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:nil
+#+OPTIONS: html5-fancy:nil tex:t
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_CONTAINER: div
