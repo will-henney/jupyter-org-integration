@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-09-18 Sun 23:05 -->
+<!-- 2016-09-19 Mon 09:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>README</title>
+<title>Test of integrating jupyter with emacs org-mode</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="William Henney" />
 <style type="text/css">
@@ -449,48 +449,40 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">README</h1>
+<h1 class="title">Test of integrating jupyter with emacs org-mode</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">Test of integrating jupyter with emacs org-mode</a>
+<li><a href="#orgheadline3">ob-ipython</a>
 <ul>
-<li><a href="#orgheadline4">ob-ipython</a>
-<ul>
-<li><a href="#orgheadline2">Installation</a></li>
-<li><a href="#orgheadline3">Tests</a></li>
+<li><a href="#orgheadline1">Installation</a></li>
+<li><a href="#orgheadline2">Tests</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5">EIN</a></li>
-<li><a href="#orgheadline6">Export options</a></li>
-</ul>
-</li>
+<li><a href="#orgheadline4">EIN</a></li>
+<li><a href="#orgheadline5">Export of this file to HTML</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">Test of integrating jupyter with emacs org-mode</h2>
-<div class="outline-text-2" id="text-orgheadline1">
 <p>
 First I am going to try <code>ob-ipython</code>, to see if that works better than using the normal python integration
 </p>
-</div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">ob-ipython</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-</div><div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2">Installation</h4>
-<div class="outline-text-4" id="text-orgheadline2">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">ob-ipython</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">Installation</h3>
+<div class="outline-text-3" id="text-orgheadline1">
 <ul class="org-ul">
 <li>It seems I already had installed it from MELPA</li>
 <li><span class="timestamp-wrapper"><span class="timestamp">[2016-09-18 Sun 18:54] </span></span> updated to the latest version</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3">Tests</h4>
-<div class="outline-text-4" id="text-orgheadline3">
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Tests</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 <p>
 We turn this on so that the inline figs get updated immediately
 </p>
@@ -593,7 +585,7 @@ sns.set_style(rc=black_style)
 
 
 <div class="figure">
-<p><object type="image/svg+xml" data="file:///tmp/image.svg" >
+<p><object type="image/svg+xml" data="figs/image.svg" >
 Sorry, your browser does not support SVG.</object>
 </p>
 </div>
@@ -609,7 +601,7 @@ ax.plot(x, np.sin(x)/x)
 
 
 <div class="figure">
-<p><object type="image/svg+xml" data="file:///tmp/fig-ax.svg" >
+<p><object type="image/svg+xml" data="figs/fig-ax.svg" >
 Sorry, your browser does not support SVG.</object>
 </p>
 </div>
@@ -625,25 +617,54 @@ if we want to.  And we can change the size of the figure.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">EIN</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">EIN</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 We should also look at this
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Export options</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Export of this file to HTML</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<ul class="org-ul">
+<li>Note that we run <code>org-export</code> on the top-level section, so go to the top and type <code>C-c C-e C-s h o</code>
+<ul class="org-ul">
+<li>This is the only way of getting the export file name to be different from the org source file name</li>
+<li>We want it to export to <code>docs/index.html</code> so that it is served as a web page on <code>github.io</code></li>
+</ul></li>
+<li>In order that the inline figures work in both the org file and in the exported web page, we use the following hack:
+<ul class="org-ul">
+<li>Figure files are specified by a relative path in the <code>figs/</code> subfolder
+<ul class="org-ul">
+<li>E.g., <a href="figs/fig-ax.svg">figs/fig-ax.svg</a></li>
+</ul></li>
+<li><p>
+But this is really a symbolic link to the <code>docs/</code> folder:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">ls -ld figs
+</pre>
 </div>
+
+<pre class="example">
+lrwxr-xr-x  1 will  staff  9 Sep 19 09:09 figs -&gt; docs/figs
+</pre></li>
+</ul></li>
+<li>The export options are given below (invisible in HTML export)
+<ul class="org-ul">
+<li>Only change from default is to remove section numbering</li>
+</ul></li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: William Henney</p>
-<p class="date">Created: 2016-09-18 Sun 23:05</p>
+<p class="date">Created: 2016-09-19 Mon 09:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

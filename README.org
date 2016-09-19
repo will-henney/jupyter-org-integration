@@ -1,4 +1,8 @@
 * Test of integrating jupyter with emacs org-mode
+:PROPERTIES:
+:EXPORT_FILE_NAME: docs/index
+:END:
+
 First I am going to try =ob-ipython=, to see if that works better than using the normal python integration
 ** ob-ipython
 *** Installation
@@ -115,7 +119,23 @@ if we want to.  And we can change the size of the figure.
 ** EIN
 We should also look at this
 
-** Export options
+** Export of this file to HTML
++ Note that we run =org-export= on the top-level section, so go to the top and type =C-c C-e C-s h o=
+  + This is the only way of getting the export file name to be different from the org source file name
+  + We want it to export to =docs/index.html= so that it is served as a web page on =github.io= 
++ In order that the inline figures work in both the org file and in the exported web page, we use the following hack:
+  + Figure files are specified by a relative path in the =figs/= subfolder
+    + E.g., [[file:figs/fig-ax.svg][figs/fig-ax.svg]]
+  + But this is really a symbolic link to the =docs/= folder:
+    #+BEGIN_SRC bash :exports both
+    ls -ld figs
+    #+END_SRC
+
+    #+RESULTS:
+    : lrwxr-xr-x  1 will  staff  9 Sep 19 09:09 figs -> docs/figs
++ The export options are given below (invisible in HTML export)
+  + Only change from default is to remove section numbering
+
 #+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
 #+OPTIONS: author:t c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t
